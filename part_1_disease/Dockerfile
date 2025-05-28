@@ -9,20 +9,23 @@ RUN apt-get update && apt-get install -y build-essential cmake && apt-get clean
 WORKDIR /src/build 
 RUN cmake .. && make
 
-# Second stage for deployment, without any build dependencies or source files
 FROM debian:bookworm-slim as run 
 
 WORKDIR /app
-COPY --from=build /src/build/hpc_disease_simulation /app
+COPY --from=build /src/build/main_exec /app
 COPY --from=build /src/build/test /app
+COPY --from=build /src/build/test_disease /app
+COPY --from=build /src/build/test_person /app
+COPY --from=build /src/build/test_population /app
+COPY --from=build /src/build/test_touch /app
 
-# Run the tests just to be sure (not required if tests are part of a 
-# gitlab CICD pipeline
-RUN /app/test
 
-# Change to a working directory
+RUN /app/test && \
+    /app/test_disease && \
+    /app/test_person && \
+    /app/test_population && \
+    /app/test_touch
+
 WORKDIR /scratch
 
-# Execute the simulation on image start
-ENTRYPOINT ["/app/hpc_disease_simulation"]
-
+ENTRYPOINT ["/app/main_exec"]

@@ -25,6 +25,27 @@ void Population::random_infection(const Disease& d, int count) {
 }
 
 
+    //for vaccination rate 1.0
+    // int Population::random_infection(const Disease& d, int count) {
+    // int infected = 0;
+    // int size = people.size();
+    // int attempts = 0;
+    // int max_attempts = size * 10;  
+
+    // while (infected < count && attempts < max_attempts) {
+    //     int index = std::rand() % size;
+    //     if (people[index].get_status() == SUSCEPTIBLE) {
+    //         people[index].infect(d);
+    //         ++infected;
+    //     }
+    //     ++attempts;
+    // }
+
+    // return infected;  
+    // }
+
+
+
 void Population::random_vaccination(int count) {
     int vaccinated = 0;
     int size = people.size();

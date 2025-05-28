@@ -23,4 +23,4 @@ public:
     void touch(Person& other, const Disease& d);
 };
 
-#endif // PERSON_H
+#endif 

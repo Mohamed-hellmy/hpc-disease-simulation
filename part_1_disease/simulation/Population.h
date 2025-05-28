@@ -15,6 +15,9 @@ private:
 public:
     
     Population(int size);
+    //for vaccination rate 1.0
+    //int random_infection(const Disease& d, int count);
+    
     void random_infection(const Disease& d, int count);
     void random_vaccination(int count);
     int count_infected() const;

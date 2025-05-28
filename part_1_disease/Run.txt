@@ -1,0 +1,12 @@
+cd build
+cmake ..
+make
+
+./main_exec
+./test_person
+./test_population
+./test_touch
+./test
+
+python3 ../plot_simulation.py
+python3 ../vaccination_curve.py

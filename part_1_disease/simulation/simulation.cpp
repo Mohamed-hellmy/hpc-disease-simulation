@@ -49,6 +49,19 @@ void Simulation::start() {
         pop.random_vaccination(size * vaccination_rate);
         if (patient_zero) pop.random_infection(disease, 1);
 
+        //for vaccination rate 1.0
+        // if (patient_zero) {
+        // int infected_count = pop.random_infection(disease, 1);
+        // if (infected_count == 0) {
+        // std::cout << "Patient zero could not be infected (possibly all vaccinated)." << std::endl;
+        // summary << "total_steps,0\n";
+        // summary << "susceptiple_persons," << pop.count_susceptible() << "\n";
+        // summary << "recovered_persons," << pop.count_recovered() << "\n";
+        // summary << "vaccinated_persons," << pop.count_vaccinated() << "\n";
+        // continue;  
+        //     }
+        // }
+
         int total_steps = 0;
 
         while (true) {
@@ -97,3 +110,4 @@ void Simulation::start() {
 
     std::cout << "Results saved to report_data/disease_details.csv and report_data/disease_stats.csv" << std::endl;
 }
+
