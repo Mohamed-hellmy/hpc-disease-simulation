@@ -12,7 +12,6 @@ build/
 *.gcda 
 *.gcno
 *.gch
-*.csv
 
 # User-specific files
 *.rsuser
