@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim as build
+FROM debian:bookworm-slim AS build
 
 WORKDIR /src 
 COPY CMakeLists.txt /src
@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y build-essential cmake && apt-get clean
 WORKDIR /src/build 
 RUN cmake .. && make
 
-FROM debian:bookworm-slim as run 
+FROM debian:bookworm-slim AS run 
 
 WORKDIR /app
 COPY --from=build /src/build/main_exec /app
