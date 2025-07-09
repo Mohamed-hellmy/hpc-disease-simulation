@@ -1,0 +1,17 @@
+mkdir
+cd build
+cmake ..
+make
+
+with GUI:
+mpirun -n 1 ./game_of_life -r 64 -c 64 -i 100 --show-grid
+
+or without GUI:
+mpirun  1 ./game_of_life -r 64 -c 64 -i 100 --show-grid
+
+
+run docker:
+sudo docker run --rm \
+  -e OMPI_ALLOW_RUN_AS_ROOT=1 \
+  -e OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1 \
+  game-of-life-parallel
